@@ -3,6 +3,8 @@
     <li v-for="item in items">
       <div class="img-container">
         <span class="label">{{ item.name }}</span>
+        <fa-icon v-if="item.isFav" class="star" icon="fa-star" />
+        <fa-icon v-else class="star" icon="fa-regular fa-star" />
         <img :src="item.image" :alt="item.name + 'Img'" class="image" />
       </div>
     </li>
@@ -42,6 +44,14 @@ export default {
   padding: 3px;
   position: absolute;
   z-index: 1;
+}
+.img-container .star {
+  vertical-align: top;
+  padding: 3px;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  color: var(--sw-orange);
 }
 .img-container .image {
   width: 100%;
