@@ -1,26 +1,14 @@
 export const topicsList = [
   {
-    link: 1,
-    name: "Vue",
+    value: "python",
+    name: "Python",
   },
   {
-    link: 2,
+    value: "typescript",
     name: "Typescript",
   },
   {
-    link: 3,
+    value: "javascript",
     name: "Javascript",
-  },
-  {
-    link: 4,
-    name: "Go",
-  },
-  {
-    link: 5,
-    name: "Css",
-  },
-  {
-    link: 6,
-    name: "Node",
   },
 ];

@@ -1,34 +1,53 @@
 <template>
   <main>
-    <h1 class="title">Bookmarks</h1>
-    <span class="subtitle">Toggle topics to show</span>
-    <FiltersList :topics="topicsList" />
-    <SliderList :items="discoverStore?.items" />
+    <!--<div class="bookmarks">
+      <h1 class="title">Bookmarks</h1>
+      <SliderList :items="discoverStore?.favs" />
+    </div>-->
+    <div class="topics-list">
+      <span class="subtitle">Toggle topics to show</span>
+      <FiltersList :topics="topicsList" :action="discoverStore.fetchItems()" />
+    </div>
+    <div>
+      <h1 class="title">Vue</h1>
+      <SliderList :items="getItems.items" />
+    </div>
   </main>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import FiltersList from "./FiltersList.vue";
 import SliderList from "./SliderList.vue";
 import { useDiscoverStore } from "../stores/discover";
 import { topicsList } from "../helpers/constants";
-export default {
-  components: {
-    FiltersList,
-    SliderList,
-  },
-  setup() {
-    const discoverStore = useDiscoverStore();
-    return { discoverStore, topicsList };
-  },
-};
+import { onMounted, computed } from "vue";
+
+const discoverStore = useDiscoverStore();
+const getItems = computed(() => {
+  return discoverStore.getItems;
+});
+
+onMounted(() => {
+  discoverStore.fetchItems();
+});
 </script>
 
 <style scoped>
+.bookmarks {
+  margin-bottom: 3rem;
+}
+
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .title {
   padding: 1rem 2.5rem;
 }
 .subtitle {
-  padding: 2.5rem;
+  padding: 1rem 2.5rem;
 }
 </style>

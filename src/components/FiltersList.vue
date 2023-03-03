@@ -1,16 +1,27 @@
 <template>
   <ul class="pill-btn-list">
     <li v-for="topic in topics">
-      <PillButton :label="topic.name" :filter="topic.link" />
+      <PillButton
+        :label="topic.name"
+        @click="discoverStore.fetchItems(topic.value, 'stars')"
+      />
     </li>
   </ul>
 </template>
 
 <script lang="ts">
 import PillButton from "./atoms/PillButton.vue";
+import { useDiscoverStore } from "../stores/discover";
 export default {
   components: { PillButton },
-  props: ["topics"],
+  props: ["topics", "action"],
+  setup() {
+    const discoverStore = useDiscoverStore();
+
+    const { items } = discoverStore;
+
+    return { discoverStore, items };
+  },
 };
 </script>
 
@@ -19,8 +30,6 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 16px;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
 }
 
 .pill-btn-list li {
