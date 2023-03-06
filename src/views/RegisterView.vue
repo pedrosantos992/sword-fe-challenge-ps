@@ -1,26 +1,30 @@
 <template>
-  <div class="login">
-    <h1>Login</h1>
-    <form class="login-form" @submit.prevent="login">
+  <div class="register">
+    <h1>Register</h1>
+    <form class="register-form" @submit.prevent="register">
       <span class="label">Username</span>
       <input
-        v-model="login_form.email"
+        v-model="register_form.email"
         type="email"
         name="username"
         id="username"
       />
       <span class="label">Password</span>
       <input
-        v-model="login_form.password"
+        v-model="register_form.password"
         type="password"
         name="password"
         id="password"
       />
-      <Button :label="'Sign In'" />
+      <span class="label">Confirm Password</span>
+      <input
+        v-model="register_form.confirmPassword"
+        type="password"
+        name="confirm-password"
+        id="confirm-password"
+      />
+      <Button :label="'Register'" />
     </form>
-    <p class="create-account-label">
-      If you do not have an account, please <a href="/register">register</a>!
-    </p>
   </div>
 </template>
 
@@ -31,20 +35,20 @@ import Button from "@/components/atoms/Button.vue";
 export default {
   components: { Button },
   setup() {
-    const login_form = ref({});
+    const register_form = ref({});
     const store = useAuthStore();
 
-    const login = async () => {
-      store.signIn(login_form.value);
+    const register = async () => {
+      store.register(register_form.value);
     };
-    return { login_form, login };
+    return { register_form, register };
   },
 };
 </script>
 
-<style>
+<style scoped>
 @media (min-width: 1024px) {
-  .login {
+  .register {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -54,16 +58,16 @@ export default {
     margin-right: auto;
     margin-left: auto;
   }
-  .login h1 {
+  .register h1 {
     margin-bottom: 20px;
   }
-  .login-form {
+  .register-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-  .login-form input {
+  .register-form input {
     width: 100%;
     margin-bottom: 16px;
     height: 40px;
@@ -72,17 +76,8 @@ export default {
     border-radius: 4px;
     letter-spacing: 1px;
   }
-  .login-form .label {
+  .register-form .label {
     margin-right: auto;
-  }
-  .create-account-label {
-    margin-top: 1rem;
-  }
-  .create-account-label a {
-    text-decoration: underline;
-  }
-  .create-account-label a:hover {
-    background: unset;
   }
 }
 </style>

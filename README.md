@@ -1,25 +1,36 @@
-# sword-ps
+# Sword Frontend Challenge
 
-This template should help get you started developing with Vue 3 in Vite.
+## Requirements done:
 
-## Recommended IDE Setup
+### Authentication Page
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[x] User Register
 
-## Type Support for `.vue` Imports in TS
+[x] Login
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+[x] Logout
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+[ ] Change Email and Username
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Discovery page
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[x] Get repositories from Github
+
+[x] Display repositories on a scrollable slider
+
+[x] On a repository card click, navigate to it on a new tab.
+
+[not working properly] Filter repositories
+
+[ ] Bookmarks
+
+[ ] Sort repositories
+
+[ ] Persist user options (bookmarks, categories, sort) at least locally.
+
+
+
 
 ## Project Setup
 
@@ -39,14 +50,3 @@ npm run dev
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```

@@ -1,22 +1,39 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-import './assets/main.css'
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons'
-import { faStar as starRegular } from '@fortawesome/free-regular-svg-icons'
+import "./assets/main.css";
 
-library.add(starRegular, starSolid)
-const app = createApp(App)
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faStar as starSolid } from "@fortawesome/free-solid-svg-icons";
+import { faStar as starRegular } from "@fortawesome/free-regular-svg-icons";
 
-app.component('fa-icon', FontAwesomeIcon)
+library.add(starRegular, starSolid);
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+const firebaseConfig = {
+  apiKey: "AIzaSyBbn0jne0VY4pnQD_xMyfqByd90SqF4Lhg",
+  authDomain: "sword-fe-challenge-ps.firebaseapp.com",
+  projectId: "sword-fe-challenge-ps",
+  storageBucket: "sword-fe-challenge-ps.appspot.com",
+  messagingSenderId: "95171738760",
+  appId: "1:95171738760:web:640729c4264d1a548c333d",
+  measurementId: "G-Y51844TWQ3",
+};
 
-app.mount('#app')
+const firebase = initializeApp(firebaseConfig);
+const auth = getAuth(firebase);
+export { auth };
+
+app.component("fa-icon", FontAwesomeIcon);
+
+app.use(createPinia());
+app.use(router);
+
+app.mount("#app");

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
   <header>
     <div class="wrapper">
@@ -15,14 +11,47 @@ import { RouterLink, RouterView } from "vue-router";
             height="40"
           />
         </RouterLink>
-        <RouterLink to="/">Discover</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/discover">Discover</RouterLink>
+        <RouterLink to="/login" v-if="!isLoggedIn">Login</RouterLink>
+        <div class="account-options" v-else>
+          <RouterLink to="/my-account">{{ userEmail }}</RouterLink>
+          <Button @click="handleSignout" :label="'Sign out'" />
+        </div>
       </nav>
     </div>
   </header>
 
   <RouterView />
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { RouterLink, RouterView } from "vue-router";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import router from "./router";
+import Button from "./components/atoms/Button.vue";
+
+const isLoggedIn = ref({});
+const userEmail = ref({});
+let auth: any;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true;
+      userEmail.value = user.email!;
+    } else {
+      isLoggedIn.value = false;
+    }
+  });
+});
+
+const handleSignout = () => {
+  signOut(auth).then(() => {
+    router.push("/");
+  });
+};
+</script>
 
 <style scoped>
 header {
@@ -84,6 +113,13 @@ nav a:first-of-type {
     display: flex;
     flex-direction: row;
     margin-top: 1rem;
+  }
+  .account-options {
+    display: flex;
+    flex-direction: row;
+  }
+  .account-options a {
+    width: fit-content;
   }
 }
 </style>
