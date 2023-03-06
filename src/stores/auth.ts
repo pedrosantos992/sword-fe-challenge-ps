@@ -11,10 +11,10 @@ export const useAuthStore = defineStore("authStore", {
   state: () => ({}),
   getters: {},
   actions: {
-    signIn(user: any) {
+    async signIn(user: any) {
       const auth = getAuth();
       const { email, password } = user;
-      signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           router.push("/discover");
           const user = userCredential.user;
@@ -24,13 +24,13 @@ export const useAuthStore = defineStore("authStore", {
         });
     },
 
-    register(user: any) {
+    async register(user: any) {
       const auth = getAuth();
       const { email, password, confirmPassword } = user;
       if (password !== confirmPassword) {
         return alert("Passwords do not match!");
       }
-      createUserWithEmailAndPassword(auth, email, password)
+      await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           router.push("/discover");
@@ -41,9 +41,9 @@ export const useAuthStore = defineStore("authStore", {
         });
     },
 
-    signout() {
+    async signout() {
       const auth = getAuth();
-      signOut(auth).catch((error) => {
+      await signOut(auth).catch((error) => {
         console.log(error.message);
       });
     },
