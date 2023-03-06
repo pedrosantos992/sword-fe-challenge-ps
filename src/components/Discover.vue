@@ -23,7 +23,7 @@ import { topicsList } from "../helpers/constants";
 import { onMounted, computed } from "vue";
 
 const discoverStore = useDiscoverStore();
-const getItems = computed(() => {
+const getItems: any = computed(() => {
   return discoverStore.getItems;
 });
 

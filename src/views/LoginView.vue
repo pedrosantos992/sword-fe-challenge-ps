@@ -31,7 +31,10 @@ import Button from "@/components/atoms/Button.vue";
 export default {
   components: { Button },
   setup() {
-    const login_form = ref({});
+    const login_form = ref({
+      email: "" as string,
+      password: "" as string,
+    });
     const store = useAuthStore();
 
     const login = async () => {

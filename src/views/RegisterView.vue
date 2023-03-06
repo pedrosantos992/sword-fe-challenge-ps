@@ -35,7 +35,11 @@ import Button from "@/components/atoms/Button.vue";
 export default {
   components: { Button },
   setup() {
-    const register_form = ref({});
+    const register_form = ref({
+      email: "" as string,
+      password: "" as string,
+      confirmPassword: "" as string,
+    });
     const store = useAuthStore();
 
     const register = async () => {
