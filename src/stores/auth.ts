@@ -15,9 +15,8 @@ export const useAuthStore = defineStore("authStore", {
       const auth = getAuth();
       const { email, password } = user;
       await signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(() => {
           router.push("/discover");
-          const user = userCredential.user;
         })
         .catch((error) => {
           alert(error.message);
@@ -31,8 +30,7 @@ export const useAuthStore = defineStore("authStore", {
         return alert("Passwords do not match!");
       }
       await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
+        .then(() => {
           router.push("/discover");
           alert("Account created!");
         })
