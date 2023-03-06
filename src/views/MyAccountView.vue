@@ -10,19 +10,15 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const isLoggedIn = ref({});
 const userEmail = ref({});
 let auth: any;
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      isLoggedIn.value = true;
       userEmail.value = user.email!;
-    } else {
-      isLoggedIn.value = false;
     }
   });
 });
