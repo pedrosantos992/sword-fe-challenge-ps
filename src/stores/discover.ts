@@ -1,9 +1,11 @@
+import { SESSION_STORAGE } from "@/helpers/constants";
 import axios from "axios";
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 
 export const useDiscoverStore = defineStore("discoverStore", {
   state: () => ({
-    items: Array(),
+    items: useStorage(SESSION_STORAGE.ITEMS, []) as any,
   }),
   getters: {
     getItems(state) {

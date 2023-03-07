@@ -1,3 +1,8 @@
+export const SESSION_STORAGE = {
+  ITEMS: "ITEMS",
+  SELECTED_FILTERS: "SELECTED_FILTERS",
+};
+
 export const topicsList = [
   {
     value: "Python",
