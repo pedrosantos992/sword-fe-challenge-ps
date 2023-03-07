@@ -9,20 +9,18 @@
   </ul>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import PillButton from "./atoms/PillButton.vue";
 import { useDiscoverStore } from "../stores/discover";
-export default {
-  components: { PillButton },
-  props: ["topics", "action"],
-  setup() {
-    const discoverStore = useDiscoverStore();
 
-    const { items } = discoverStore;
+const props = defineProps({
+  topics: Object,
+  action: Function,
+});
 
-    return { discoverStore, items };
-  },
-};
+const discoverStore = useDiscoverStore();
+
+const { items } = discoverStore;
 </script>
 
 <style scoped>

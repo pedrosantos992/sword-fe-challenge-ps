@@ -6,10 +6,12 @@
     </div>-->
     <div class="topics-list">
       <span class="subtitle">Toggle topics to show</span>
-      <FiltersList :topics="topicsList" :action="discoverStore.fetchItems()" />
+      <FiltersList
+        :topics="topicsList"
+        :action="() => discoverStore.fetchItems()"
+      />
     </div>
     <div>
-      <h1 class="title">Vue</h1>
       <SliderList :items="getItems.items" />
     </div>
   </main>
@@ -44,9 +46,7 @@ onMounted(() => {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.title {
-  padding: 1rem 2.5rem;
-}
+
 .subtitle {
   padding: 1rem 2.5rem;
 }

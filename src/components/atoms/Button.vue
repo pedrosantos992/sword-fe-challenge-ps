@@ -2,10 +2,10 @@
   <button class="button" type="submit">{{ label }}</button>
 </template>
 
-<script lang="ts">
-export default {
-  props: ["label"],
-};
+<script setup lang="ts">
+const props = defineProps({
+  label: String,
+});
 </script>
 
 <style scoped>

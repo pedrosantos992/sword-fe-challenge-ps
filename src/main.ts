@@ -13,8 +13,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faStar as starSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as starRegular } from "@fortawesome/free-regular-svg-icons";
+import { faChevronDown as chevronDown } from "@fortawesome/free-solid-svg-icons";
 
-library.add(starRegular, starSolid);
+library.add(starRegular, starSolid, chevronDown);
 const app = createApp(App);
 
 const firebaseConfig = {

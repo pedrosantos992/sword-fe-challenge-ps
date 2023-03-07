@@ -28,25 +28,20 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from "vue";
 import { useAuthStore } from "../stores/auth";
 import Button from "@/components/atoms/Button.vue";
-export default {
-  components: { Button },
-  setup() {
-    const register_form = ref({
-      email: "" as string,
-      password: "" as string,
-      confirmPassword: "" as string,
-    });
-    const store = useAuthStore();
 
-    const register = async () => {
-      store.register(register_form.value);
-    };
-    return { register_form, register };
-  },
+const register_form = ref({
+  email: "" as string,
+  password: "" as string,
+  confirmPassword: "" as string,
+});
+const store = useAuthStore();
+
+const register = async () => {
+  store.register(register_form.value);
 };
 </script>
 

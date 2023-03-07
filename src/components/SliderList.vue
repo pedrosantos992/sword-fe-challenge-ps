@@ -1,4 +1,8 @@
 <template>
+  <div class="header">
+    <h1 class="title">Vue</h1>
+    <span class="icon"><fa-icon icon="fa-solid fa-chevron-down" /></span>
+  </div>
   <ul class="list">
     <li v-for="item in items">
       <div class="img-container">
@@ -15,13 +19,26 @@
   </ul>
 </template>
 
-<script lang="ts">
-export default {
-  props: ["items"],
-};
+<script setup lang="ts">
+const props = defineProps({
+  items: Object,
+});
 </script>
 
 <style scoped>
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header .icon {
+  margin-top: auto;
+  margin-bottom: auto;
+  cursor: pointer;
+}
+.header .title {
+  padding: 1rem 2.5rem;
+}
 .list {
   display: flex;
   flex-direction: row;

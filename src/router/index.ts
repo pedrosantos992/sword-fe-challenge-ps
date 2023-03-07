@@ -25,17 +25,17 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: () => LoginView,
+      component: LoginView,
     },
     {
       path: "/register",
       name: "register",
-      component: () => RegisterView,
+      component: RegisterView,
     },
     {
       path: "/my-account",
       name: "myAccount",
-      component: () => MyAccountView,
+      component: MyAccountView,
       meta: {
         requiresAuth: true,
       },
