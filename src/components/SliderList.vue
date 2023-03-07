@@ -8,7 +8,12 @@
   <ul class="list">
     <li v-for="item in items">
       <div class="img-container">
-        <fa-icon v-if="isBookmarksSlider" class="star" icon="fa-star" />
+        <fa-icon
+          v-if="isBookmarksSlider"
+          class="star"
+          icon="fa-star"
+          @click="handleFav(item)"
+        />
         <fa-icon
           v-else
           class="star"
