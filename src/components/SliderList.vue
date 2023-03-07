@@ -45,7 +45,7 @@ const props = defineProps({
   flex-direction: row;
   gap: 16px;
   max-width: fit-content;
-  height: 170px;
+  height: 200px;
   overflow-x: scroll;
 }
 .list li {

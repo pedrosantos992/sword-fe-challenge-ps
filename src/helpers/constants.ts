@@ -11,4 +11,8 @@ export const topicsList = [
     value: "Javascript",
     name: "Javascript",
   },
+  {
+    value: "Go",
+    name: "Go",
+  },
 ];

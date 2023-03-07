@@ -3,14 +3,14 @@ import { defineStore } from "pinia";
 
 export const useDiscoverStore = defineStore("discoverStore", {
   state: () => ({
-    items: [],
+    items: Array(),
   }),
   getters: {
     getItems(state) {
       return state.items;
     },
     getSelectedFilters(state) {
-      return state.items.map((e) => e.language);
+      return state.items.map((e: { language: String }) => e.language);
     },
   },
   actions: {
