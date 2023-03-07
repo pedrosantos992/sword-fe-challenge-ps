@@ -1,6 +1,9 @@
 <template>
   <ul class="pill-btn-list">
-    <li v-for="topic in topics">
+    <li
+      v-for="topic in topics"
+      :class="{ 'is-selected': selectedFilters!.includes(topic.name) }"
+    >
       <PillButton
         :label="topic.name"
         @click="discoverStore.fetchItems(topic.value, 'stars')"
@@ -15,6 +18,7 @@ import { useDiscoverStore } from "../stores/discover";
 
 const props = defineProps({
   topics: Object,
+  selectedFilters: Array,
   action: Function,
 });
 
@@ -38,6 +42,9 @@ const { items } = discoverStore;
   text-align: center;
   cursor: pointer;
   height: 40px;
+}
+.pill-btn-list .is-selected {
+  background-color: var(--sw-green-selected);
 }
 
 .pill-btn-list li:hover {

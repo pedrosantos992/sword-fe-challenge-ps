@@ -1,14 +1,14 @@
 export const topicsList = [
   {
-    value: "python",
+    value: "Python",
     name: "Python",
   },
   {
-    value: "typescript",
+    value: "Typescript",
     name: "Typescript",
   },
   {
-    value: "javascript",
+    value: "Javascript",
     name: "Javascript",
   },
 ];

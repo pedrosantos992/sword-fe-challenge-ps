@@ -8,6 +8,7 @@
       <span class="subtitle">Toggle topics to show</span>
       <FiltersList
         :topics="topicsList"
+        :selectedFilters="selectedFilters"
         :action="() => discoverStore.fetchItems()"
       />
     </div>
@@ -30,8 +31,8 @@ const discoverStore = useDiscoverStore();
 const getItems: any = computed(() => {
   return discoverStore.getItems;
 });
-const getFilters: any = computed(() => {
-  return discoverStore.getFilters;
+const selectedFilters: any = computed(() => {
+  return discoverStore.getSelectedFilters;
 });
 </script>
 

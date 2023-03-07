@@ -1,6 +1,5 @@
 import axios from "axios";
 import { defineStore } from "pinia";
-import { testData } from "./mockData.js";
 
 export const useDiscoverStore = defineStore("discoverStore", {
   state: () => ({
@@ -9,6 +8,9 @@ export const useDiscoverStore = defineStore("discoverStore", {
   getters: {
     getItems(state) {
       return state.items;
+    },
+    getSelectedFilters(state) {
+      return state.items.map((e) => e.language);
     },
   },
   actions: {
@@ -20,9 +22,15 @@ export const useDiscoverStore = defineStore("discoverStore", {
           { params }
         );
         // add or remove filter
-        if (this.items.filter((e) => e.language === language).length > 0) {
+        if (
+          this.items.filter(
+            (e: { language: String }) => e.language === language
+          ).length > 0
+        ) {
           this.items.splice(
-            this.items.findIndex((item) => item.language === language),
+            this.items.findIndex(
+              (item: { language: String }) => item.language === language
+            ),
             1
           );
         } else {
