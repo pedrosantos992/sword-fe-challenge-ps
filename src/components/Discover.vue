@@ -1,9 +1,11 @@
 <template>
   <main>
-    <!--<div class="bookmarks">
-      <h1 class="title">Bookmarks</h1>
-      <SliderList :items="discoverStore?.favs" />
-    </div>-->
+    <SliderList
+      v-if="getBookmarks.length"
+      :items="getBookmarks"
+      :filterName="'Bookmarks'"
+      :isBookmarksSlider="true"
+    />
     <div class="topics-list">
       <span class="subtitle">Toggle topics to show</span>
       <FiltersList
@@ -13,9 +15,7 @@
       />
     </div>
     <div v-for="item in getItems">
-      <div>
-        <SliderList :items="item.items" :filterName="item.language" />
-      </div>
+      <SliderList :items="item.items" :filterName="item.language" />
     </div>
   </main>
 </template>
@@ -30,6 +30,9 @@ import { computed } from "vue";
 const discoverStore = useDiscoverStore();
 const getItems: any = computed(() => {
   return discoverStore.getItems;
+});
+const getBookmarks: any = computed(() => {
+  return discoverStore.getBookmarks;
 });
 const selectedFilters: any = computed(() => {
   return discoverStore.getSelectedFilters;

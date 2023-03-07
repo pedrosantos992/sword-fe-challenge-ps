@@ -1,6 +1,6 @@
 export const SESSION_STORAGE = {
   ITEMS: "ITEMS",
-  SELECTED_FILTERS: "SELECTED_FILTERS",
+  BOOKMARKS: "BOOKMARKS",
 };
 
 export const topicsList = [

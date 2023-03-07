@@ -6,10 +6,14 @@ import { useStorage } from "@vueuse/core";
 export const useDiscoverStore = defineStore("discoverStore", {
   state: () => ({
     items: useStorage(SESSION_STORAGE.ITEMS, []) as any,
+    bookmarks: useStorage(SESSION_STORAGE.BOOKMARKS, []) as any,
   }),
   getters: {
     getItems(state) {
       return state.items;
+    },
+    getBookmarks(state) {
+      return state.bookmarks;
     },
     getSelectedFilters(state) {
       return state.items.map((e: { language: String }) => e.language);
@@ -40,6 +44,19 @@ export const useDiscoverStore = defineStore("discoverStore", {
         }
       } catch (error) {
         console.log(error);
+      }
+    },
+    async handleFavorites(item: { id: Number }) {
+      if (
+        this.bookmarks.filter((e: { id: Number }) => e.id === item.id).length >
+        0
+      ) {
+        this.bookmarks.splice(
+          this.bookmarks.findIndex((e: { id: Number }) => e.id === item.id),
+          1
+        );
+      } else {
+        this.bookmarks.push(item);
       }
     },
   },
