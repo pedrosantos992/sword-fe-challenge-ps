@@ -21,7 +21,7 @@
 
 [x] On a repository card click, navigate to it on a new tab.
 
-[not working properly] Filter repositories
+[x] Filter repositories
 
 [ ] Bookmarks
 

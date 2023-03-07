@@ -1,5 +1,6 @@
 import axios from "axios";
 import { defineStore } from "pinia";
+import { testData } from "./mockData.js";
 
 export const useDiscoverStore = defineStore("discoverStore", {
   state: () => ({
@@ -15,10 +16,18 @@ export const useDiscoverStore = defineStore("discoverStore", {
       const params = { language: language, sort: sort };
       try {
         const data = await axios.get(
-          `https://api.github.com/search/repositories?q=stars%3A%3E1000%20license%3Amit&per_page=10&page=1`,
+          `https://api.github.com/search/repositories?q=license%3Amit&per_page=10&page=1`,
           { params }
         );
-        this.items = data.data;
+        // add or remove filter
+        if (this.items.filter((e) => e.language === language).length > 0) {
+          this.items.splice(
+            this.items.findIndex((item) => item.language === language),
+            1
+          );
+        } else {
+          this.items.push({ ...data.data, language: language });
+        }
       } catch (error) {
         console.log(error);
       }

@@ -11,8 +11,10 @@
         :action="() => discoverStore.fetchItems()"
       />
     </div>
-    <div>
-      <SliderList :items="getItems.items" />
+    <div v-for="item in getItems">
+      <div>
+        <SliderList :items="item.items" :filterName="item.language" />
+      </div>
     </div>
   </main>
 </template>
@@ -22,15 +24,14 @@ import FiltersList from "./FiltersList.vue";
 import SliderList from "./SliderList.vue";
 import { useDiscoverStore } from "../stores/discover";
 import { topicsList } from "../helpers/constants";
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
 
 const discoverStore = useDiscoverStore();
 const getItems: any = computed(() => {
   return discoverStore.getItems;
 });
-
-onMounted(() => {
-  discoverStore.fetchItems();
+const getFilters: any = computed(() => {
+  return discoverStore.getFilters;
 });
 </script>
 

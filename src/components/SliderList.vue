@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h1 class="title">Vue</h1>
+    <h1 class="title">{{ filterName }}</h1>
     <span class="icon"><fa-icon icon="fa-solid fa-chevron-down" /></span>
   </div>
   <ul class="list">
@@ -22,6 +22,7 @@
 <script setup lang="ts">
 const props = defineProps({
   items: Object,
+  filterName: String,
 });
 </script>
 
