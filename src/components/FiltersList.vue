@@ -30,6 +30,9 @@ const discoverStore = useDiscoverStore();
   display: flex;
   flex-direction: row;
   gap: 16px;
+  max-width: fit-content;
+  min-width: 300px;
+  overflow-x: scroll;
 }
 
 .pill-btn-list li {

@@ -13,6 +13,9 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      meta: {
+        hideForAuth: true,
+      },
     },
     {
       path: "/discover",
@@ -26,11 +29,17 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView,
+      meta: {
+        hideForAuth: true,
+      },
     },
     {
       path: "/register",
       name: "register",
       component: RegisterView,
+      meta: {
+        hideForAuth: true,
+      },
     },
     {
       path: "/my-account",
@@ -61,8 +70,13 @@ router.beforeEach(async (to, from, next) => {
     if (await getCurrentUser()) {
       next();
     } else {
-      alert("Unauthorized route. Please login.");
       next("/");
+    }
+  } else if (to.matched.some((record) => record.meta.hideForAuth)) {
+    if (await getCurrentUser()) {
+      next("/discover");
+    } else {
+      next();
     }
   } else {
     next();

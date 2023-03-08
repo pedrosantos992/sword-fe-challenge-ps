@@ -107,4 +107,14 @@ const handleFav = (item: any) => {
 .img-container .image {
   width: 100%;
 }
+
+@media (max-width: 500px) {
+  .header .title {
+    padding: 1rem;
+    font-size: 30px;
+  }
+  .list {
+    min-width: 300px;
+  }
+}
 </style>

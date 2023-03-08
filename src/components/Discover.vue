@@ -55,4 +55,10 @@ const selectedFilters: any = computed(() => {
 .subtitle {
   padding: 1rem 2.5rem;
 }
+
+@media (max-width: 500px) {
+  .subtitle {
+    padding: 1rem;
+  }
+}
 </style>

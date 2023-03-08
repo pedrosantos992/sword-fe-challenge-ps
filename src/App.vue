@@ -11,11 +11,10 @@
             height="40"
           />
         </RouterLink>
-        <RouterLink to="/discover">Discover</RouterLink>
-        <RouterLink to="/login" v-if="!isLoggedIn">Login</RouterLink>
-        <div class="account-options" v-else>
-          <RouterLink to="/my-account">{{ userEmail }}</RouterLink>
-          <Button @click="handleSignout" :label="'Sign out'" />
+        <RouterLink to="/discover" v-if="isLoggedIn">Discover</RouterLink>
+        <div class="account-options">
+          <RouterLink to="/login" v-if="!isLoggedIn">Login</RouterLink>
+          <RouterLink to="/my-account" v-else>{{ userEmail }}</RouterLink>
         </div>
       </nav>
     </div>
@@ -27,9 +26,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import router from "./router";
-import Button from "./components/atoms/Button.vue";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const isLoggedIn = ref({});
 const userEmail = ref({});
@@ -45,28 +42,37 @@ onMounted(() => {
     }
   });
 });
-
-const handleSignout = () => {
-  signOut(auth).then(() => {
-    router.push("/");
-  });
-};
 </script>
 
 <style scoped>
 header {
   line-height: 1.5;
+  display: flex;
+  flex-direction: row;
 }
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0;
+  cursor: pointer;
 }
 
 .wrapper {
-  width: 100%;
   font-size: 18px;
   text-align: center;
+  display: flex;
+  place-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+nav {
+  text-align: left;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 nav a.router-link-exact-active {
@@ -80,7 +86,6 @@ nav a.router-link-exact-active:hover {
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -88,38 +93,20 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
+.account-options {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .logo {
-    margin: 0;
-    cursor: pointer;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
+@media (max-width: 500px) {
   nav {
-    text-align: left;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: row;
-    margin-top: 1rem;
+    flex-direction: column;
+    gap: 10px;
   }
   .account-options {
-    display: flex;
-    flex-direction: row;
-  }
-  .account-options a {
-    width: fit-content;
+    margin-right: auto;
+    margin-left: 0;
   }
 }
 </style>

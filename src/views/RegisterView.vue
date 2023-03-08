@@ -46,37 +46,42 @@ const register = async () => {
 </script>
 
 <style scoped>
-@media (min-width: 1024px) {
-  .register {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: 100vh;
-    max-width: 400px;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-  }
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+  max-width: 400px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.register h1 {
+  margin-bottom: 20px;
+}
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.register-form input {
+  width: 100%;
+  margin-bottom: 16px;
+  height: 40px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.register-form .label {
+  margin-right: auto;
+}
+
+@media (max-width: 500px) {
   .register h1 {
-    margin-bottom: 20px;
-  }
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  .register-form input {
-    width: 100%;
-    margin-bottom: 16px;
-    height: 40px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-  }
-  .register-form .label {
-    margin-right: auto;
+    font-size: 30px;
+    margin-top: 40px;
   }
 }
 </style>

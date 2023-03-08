@@ -11,11 +11,19 @@
 <style scoped>
 .welcome {
   text-align: center;
+  margin-top: 40px;
 }
 .welcome a {
   text-decoration: underline;
 }
 .welcome a:hover {
   background: unset;
+}
+
+@media (max-width: 500px) {
+  .welcome {
+    font-size: 30px;
+    margin-top: 80px;
+  }
 }
 </style>
