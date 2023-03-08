@@ -23,8 +23,6 @@ const props = defineProps({
 });
 
 const discoverStore = useDiscoverStore();
-
-const { items } = discoverStore;
 </script>
 
 <style scoped>

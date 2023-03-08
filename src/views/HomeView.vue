@@ -3,7 +3,7 @@
 <template>
   <main>
     <h1 class="welcome">
-      Welcome! Please <a href="/login">Login</a> to view discover
+      Welcome! Please <a href="/login">Login</a> to view Discover page
     </h1>
   </main>
 </template>

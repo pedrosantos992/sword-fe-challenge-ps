@@ -1,33 +1,41 @@
 # Sword Frontend Challenge
 
+## DEMO LINK
+
+[DEPLOYED IN FIREBASE](https://sword-fe-challenge-ps.web.app/)
+
 ## Requirements done:
 
 ### Authentication Page
 
-[x] User Register
+- [x] User Register
 
-[x] Login
+- [x] Login
 
-[x] Logout
+- [x] Logout
 
-[ ] Change Email and Username
+- [x] My Account Page
+
+- [ ] Change Email and Username
 
 ### Discovery page
 
 
-[x] Get repositories from Github
+- [x] Get repositories from Github
 
-[x] Display repositories on a scrollable slider
+- [x] Display repositories on a scrollable slider
 
-[x] On a repository card click, navigate to it on a new tab.
+- [x] On a repository card click, navigate to it on a new tab.
 
-[x] Filter repositories
+- [x] Filter repositories
 
-[ ] Bookmarks
+- [x] Bookmarks
 
-[ ] Sort repositories
+- [ ] Sort repositories
 
-[ ] Persist user options (bookmarks, categories, sort) at least locally.
+- [x] Persist user options (bookmarks, categories, sort) at least locally.
+
+- [ ] Unit Tests
 
 
 
