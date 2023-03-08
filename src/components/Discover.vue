@@ -1,7 +1,7 @@
 <template>
   <main>
     <SliderList
-      v-if="getBookmarks.length"
+      v-if="getBookmarks?.length"
       :items="getBookmarks"
       :filterName="'Bookmarks'"
       :isBookmarksSlider="true"

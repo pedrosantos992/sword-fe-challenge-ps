@@ -35,7 +35,7 @@
 
 - [x] Persist user options (bookmarks, categories, sort) at least locally.
 
-- [ ] Unit Tests
+- [x] Unit Tests (Just created one simple unit test on Discover component)
 
 
 
